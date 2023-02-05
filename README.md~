@@ -1,0 +1,10 @@
+#   Public Sentiment Analysis Towards National Election.
+
+
+*****DataSet: Twitter_Data.csv
+Download Link: https://www.kaggle.com/cosmos98/twitter-and-reddit-sentimental-analysis-dataset?select=Twitter_Data.csv
+			
+*****Model:TwitterSentimentAnalysis.ipynb
+
+### TwitterSentimentAnalysis.ipynb is Updated model with 74% Accuracy on Twitter_Data.csv Dataset.###
+
