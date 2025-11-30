@@ -1,10 +1,72 @@
-#   Public Sentiment Analysis Towards National Election.
+# Twitter Sentiment Analysis using NLP
 
+This repository contains a Jupyter notebook (TwitterSentimentAnalysis.ipynb) that demonstrates a simple pipeline for sentiment analysis on Twitter data using classic NLP preprocessing and a Multinomial Naive Bayes classifier.
 
-*****DataSet: Twitter_Data.csv
-Download Link: https://www.kaggle.com/cosmos98/twitter-and-reddit-sentimental-analysis-dataset?select=Twitter_Data.csv
-			
-*****Model:TwitterSentimentAnalysis.ipynb
+The notebook covers:
+- Loading and inspecting the dataset (Twitter_Data.csv)
+- Basic data cleaning and label mapping
+- Text preprocessing: lowercasing, removing non-alphanumeric characters, stopword removal, and Porter stemming
+- Converting tokenized tweets into features using CountVectorizer
+- Training a Multinomial Naive Bayes classifier
+- Evaluating model accuracy on a test split
 
-### TwitterSentimentAnalysis.ipynb is Updated model with 74% Accuracy on Twitter_Data.csv Dataset.###
+Repository files
+- TwitterSentimentAnalysis.ipynb — main notebook demonstrating the pipeline
+- Twitter_Data.csv — dataset used by the notebook (expected to be in the repo root)
+- README.md — this file
 
+Getting started
+
+1. Clone the repository
+   git clone https://github.com/hasnatsakil/Sentiment-Analysis-using-NLP.git
+   cd Sentiment-Analysis-using-NLP
+
+2. Install dependencies
+   The notebook uses Python 3 and the following packages:
+   - numpy
+   - pandas
+   - scikit-learn
+   - nltk
+   - jupyter
+
+   Install with pip:
+   pip install numpy pandas scikit-learn nltk jupyter
+
+   Or with pip and a requirements file (create one if desired):
+   pip install -r requirements.txt
+
+3. Download NLTK data
+   The notebook uses the English stopword list. Run:
+   python -c "import nltk; nltk.download('stopwords')"
+
+4. Run the notebook
+   jupyter notebook
+   Then open `TwitterSentimentAnalysis.ipynb` and run the cells in order.
+
+Dataset
+- The notebook expects `Twitter_Data.csv` in the repository root. The dataset contains two columns used by the notebook:
+  - clean_text: the pre-cleaned tweet text
+  - category: sentiment as -1.0, 0.0, or 1.0 (negative, neutral, positive)
+
+Model & Preprocessing summary
+- Tokenize by splitting preprocessed text (the notebook applies a custom `tweet_to_words` function which:
+  - converts text to lowercase
+  - removes non-alphanumeric characters
+  - splits into tokens
+  - removes English stopwords (NLTK)
+  - applies Porter stemming)
+- Features: sklearn.feature_extraction.text.CountVectorizer with a fixed vocabulary size (5,000)
+- Classifier: sklearn.naive_bayes.MultinomialNB
+- Evaluation: train/test split (80/20) and accuracy score (the notebook shows ~0.744 reported accuracy on the test split)
+
+Notes & suggestions
+- The notebook performs stemming and stopword removal; depending on your goals you may prefer lemmas (WordNetLemmatizer) or to avoid stemming.
+- Try TF-IDF features (TfidfVectorizer), n-grams, or more expressive models (LogisticRegression, SVM, or deep learning) for better performance.
+- Verify label distribution and consider stratified splits if classes are imbalanced.
+- If the dataset is large, use incremental/mini-batch training or more efficient vectorization.
+
+License & Contact
+- Add a LICENSE file as appropriate for your project.
+- For questions contact the repository owner.
+
+Enjoy exploring the notebook and improving the sentiment analysis pipeline!
